@@ -1,0 +1,9 @@
+https://www.kaggle.com/datasets/rashikrahmanpritom/groceries-dataset-for-market-basket-analysismba?resource=download
+
+https://www.kaggle.com/code/rashikrahmanpritom/apriori-implementation
+
+https://www.kaggle.com/code/megan3/market-basket-analysis-using-pyspark
+
+https://www.kaggle.com/code/foolwuilin/market-basket-analysis-with-apriori
+
+https://www.kaggle.com/datasets/heeraldedhia/groceries-dataset?resource=download

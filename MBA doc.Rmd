@@ -1,0 +1,127 @@
+---
+title: "Market Basket Analysis in R"
+author: "Oloyede Abdulganiyu"
+date: "2023-04-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What kind of analysis is Market Basket Analysis again?
+
+## Behind the scenes
+
+*NB: you can skip this if you're not interested in learning the technologies and how it works*
+
+As you already know or not, MBA is an unsupervised machine learning methodology, in the sense that it does not have labels to train it\*
+
+In a typical MBA data format, the individual rows are transactions while the columns are items
+
+\*\* insert pics of data format
+
+Before we go deeper into MBA, we'd like to explain some terms and concepts in MBA and they are:
+
+-   **Density**:
+
+-   **Antecedent:** Also called the LHS (i.e: Left Hand Side). This is the item ...\* for example ...
+
+-   **Consequent:** Also called the RHS (i.e: Right Hand Side). This is the item we're interested in
+
+    $X => Y$ is a rule where X is the antecedent and
+
+    Y is the consequent
+
+-   **Support**: This is the relative frequency of the item(s) of interest in relation with the total frequency, we can as well say it is the probability of item(s) of interest. $supp(X) = prob(X) = freq(X)/n$ ; where n = total frequency.
+
+    $supp(XY) = prob(XY) = freq(XY)/n$ ; where freq(XY) counts the number of times X and Y appear together.
+
+-   **Confidence:** This is a measure of the reliability of the rule. Confidence is the conditional probability of the consequent beign bought together withthe antecedent. For example:
+
+    in terms of probability ------ $conf(X,Y) = prob(Y|X) = prob(XY)/prob(X)$
+
+    and in terems of support ---- $conf(X,Y) = supp(X,Y)/ supp(X)$
+
+    A confidence of 0.5 means 50% of X purchases include Y purchases too. This will enable the analyst know which products pair together and how frequently they do.
+
+-   **Lift:** Lift is the ratio of observed support to the expected support. In lay man terms, lift is the ratio of likelihood that an antecedent is bought with a consequent (item of interest) compared to any other item.
+
+    We are most interested in lift \> 1
+
+    Mathematical definition of **lift**:
+
+    in terms of probability ....... $lift(X,Y) = prob(YX)/prob(X).prob(Y)$
+
+    in terms of support ........... $lift(X,Y) = supp(X.Y)/ supp(X).supp(Y)$
+
+    Its okay if you don't quite grab it yet, let's see an example eal quick.
+
+    for rule $X => Y$ , the $lift(X,Y) = 1.42$ The interpretation of this lift will be: customers who bought X are 42% more likely to buy Y than any other randomly chosen item in the superstore.
+
+    One of the interesting features of lift is that lift is symmetrical. lift(X,Y) = lift(Y,X) = 1.42
+
+-   
+
+-   \-
+
+-   \-
+
+## The Process
+
+The project was started by installing the neceesary packages like
+
+-   `arules` - for the apriori algorithm
+
+-   `arulesViz` -for visualizing the affinity analysis
+
+-   `readxl` - since the dataset is saved as csv file, we'll need to import it into R using a library, and this is that library.
+
+-   `tidyverse` - for transformation and data cleaning
+
+-   `plyr` and `dplyr` - for transforming the dataset into a format that will be understood by `arules`
+
+-   `magrittr` -
+
+    installed the packages using the `install.packages()` function and called them using the `library()` function.
+
+Data importation was done using the code chunk :
+
+```{r eval=FALSE, echo = TRUE}
+library("readxl")
+df<- read_excel(file.choose())
+```
+
+After importing the online retail store data gotten from <link>, the data cleaning process was quick as the data was not like rolling in mud, 🤣 lolz 😅.
+
+The data transformation was more than quite tough as the data was in a format that would not be easily understood by the R libraries necessary: arules and arulesViz the data was transformed to three (3) different formats:
+
+-   one hot encoded format
+
+-   list separated by comma format
+
+-   class transaction format (wide)
+
+-   (long)
+
+Running association rules
+
+explore generated rules
+
+filter generated rules
+
+MBA visualization When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
